@@ -1,0 +1,27 @@
+description = "Wires the application together."
+
+// configure spring boot with gradle: start
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springboot_version}")
+    }
+}
+apply plugin: 'org.springframework.boot'
+jar {
+    manifest {
+        attributes 'Main-Class': 'dev.hocnguyen.smartchoice.Application'
+    }
+}
+
+dependencies {
+    compile project(":application:core")
+    compile project(":application:providers")
+    compile project(":application:entrypoints")
+    compile libs.spring_boot
+    compile libs.log
+
+    testCompile libs.unit_tests
+}

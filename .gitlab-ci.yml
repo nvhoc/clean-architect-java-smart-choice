@@ -1,0 +1,20 @@
+stages:
+  - tag
+  - build  
+#  - deploy
+
+include:
+  - remote: https://github.com/nvhoc/gitlab-jobs/releases/download/v1.0.0/default.gitlab-ci.tag.yml
+  - remote: https://github.com/nvhoc/gitlab-jobs/releases/download/v1.0.0/default.gitlab-ci.docker.yml
+#  - remote: https://github.com/nvhoc/gitlab-jobs/releases/download/v1.0.0/default.gitlab-ci.ec2-deploy.yml
+
+git-tag-live:
+  extends: git-tag
+  only:
+    - /^release-.*$/
+
+docker-live:
+  extends: docker-build
+  only:
+   - /^release-.*$/
+    

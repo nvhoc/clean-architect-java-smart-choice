@@ -1,0 +1,6 @@
+rootProject.name = 'smart-choice'
+// application
+include "application:core"
+include "application:providers"
+include "application:entrypoints"
+include "application:configuration"
